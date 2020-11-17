@@ -34,7 +34,7 @@ class CeilingLightAgent:
     ''' Function to get the appropriate action according to the Q-value '''
     def get_action(self, state):
         ''' extract specific state variables which is related to this agent '''
-        curr_state = [state[0], state[3], state[5], state[6], state[9]] # Time, Brightness, Ceiling, Stand, TV
+        curr_state = [state[0], state[2], state[4], state[5], state[8]] # Time, Brightness, Ceiling, Stand, TV
         curr_state = str(curr_state)
 
         ''' select the action according to the Q-value '''
