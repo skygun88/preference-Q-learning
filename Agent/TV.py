@@ -3,7 +3,7 @@ import numpy as np
 import random
 
 
-class CeilingLightAgent:
+class TVAgent:
     def __init__(self, user, task):
         self.user = user
         self.task = task
@@ -43,7 +43,7 @@ class CeilingLightAgent:
 
         ''' select the action according to the Q-value '''
         q_list = self.q_table[curr_state]
-        print(f'Ceiling: Q values = {q_list}')
+        print(f'TV: Q values = {q_list}')
         action = arg_max(q_list)
         self.time_step += 1
         return action

@@ -1,0 +1,351 @@
+[
+    {
+        "label": "defaultdict",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {
+            "value": "\n```python\nimport collections\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "defaultdict",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {
+            "value": "\n```python\nimport collections\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "defaultdict",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {
+            "value": "\n```python\nimport collections\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {
+            "value": "\n```python\nimport numpy\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {
+            "value": "\n```python\nimport random\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Env",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {
+            "value": "\n```python\nimport environment\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "*",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {
+            "value": "\n```python\nimport environment\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "*",
+        "importPath": "Agent.CeilingLight",
+        "description": "Agent.CeilingLight",
+        "isExtraImport": true,
+        "detail": "Agent.CeilingLight",
+        "documentation": {
+            "value": "\n```python\nimport Agent.CeilingLight\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "*",
+        "importPath": "Agent.StandLight",
+        "description": "Agent.StandLight",
+        "isExtraImport": true,
+        "detail": "Agent.StandLight",
+        "documentation": {
+            "value": "\n```python\nimport Agent.StandLight\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "*",
+        "importPath": "Agent.TV",
+        "description": "Agent.TV",
+        "isExtraImport": true,
+        "detail": "Agent.TV",
+        "documentation": {
+            "value": "\n```python\nimport Agent.TV\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {
+            "value": "\n```python\nimport sys\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "*",
+        "importPath": "user",
+        "description": "user",
+        "isExtraImport": true,
+        "detail": "user",
+        "documentation": {
+            "value": "\n```python\nimport user\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "pyplot",
+        "importPath": "matplotlib",
+        "description": "matplotlib",
+        "isExtraImport": true,
+        "detail": "matplotlib",
+        "documentation": {
+            "value": "\n```python\nimport matplotlib\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "*",
+        "importPath": "coordinator",
+        "description": "coordinator",
+        "isExtraImport": true,
+        "detail": "coordinator",
+        "documentation": {
+            "value": "\n```python\nimport coordinator\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "CeilingLightAgent",
+        "kind": 6,
+        "importPath": "Agent.CeilingLight",
+        "description": "Agent.CeilingLight",
+        "peekOfCode": "class CeilingLightAgent:\n    def __init__(self, user, task):\n        self.user = user\n        self.task = task\n        self.actions = [0, 1, 2] # Still/OFF/ON\n        self.init_lr = 0.75\n        self.time_step = 0\n        self.discount_factor = 0.25\n        self.rewardQueue = [0.0, 0.0, 0.0, 0.0, 0.0] # if there are more than 2 negative reward here, reset the time step.\n        self.T_reset = 3",
+        "detail": "Agent.CeilingLight",
+        "documentation": {
+            "value": "\n```python\nfrom Agent.CeilingLight import CeilingLightAgent\n```\n\n```python\n\n\n```\n\n```python\nclass CeilingLightAgent:\n    def __init__(self, user, task):\n        self.user = user\n        self.task = task\n        self.actions = [0, 1, 2] # Still/OFF/ON\n        self.init_lr = 0.75\n        self.time_step = 0\n        self.discount_factor = 0.25\n        self.rewardQueue = [0.0, 0.0, 0.0, 0.0, 0.0] # if there are more than 2 negative reward here, reset the time step.\n        self.T_reset = 3\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "arg_max",
+        "kind": 2,
+        "importPath": "Agent.CeilingLight",
+        "description": "Agent.CeilingLight",
+        "peekOfCode": "def arg_max(q_list):\n    max_idx_list = np.argwhere(q_list == np.amax(q_list))\n    max_idx_list = max_idx_list.flatten().tolist()\n    return random.choice(max_idx_list)",
+        "detail": "Agent.CeilingLight",
+        "documentation": {
+            "value": "\n```python\nfrom Agent.CeilingLight import arg_max\n```\n\n```python\n\n\n```\n\n```python\ndef arg_max(q_list):\n    max_idx_list = np.argwhere(q_list == np.amax(q_list))\n    max_idx_list = max_idx_list.flatten().tolist()\n    return random.choice(max_idx_list)\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "StandLightAgent",
+        "kind": 6,
+        "importPath": "Agent.StandLight",
+        "description": "Agent.StandLight",
+        "peekOfCode": "class StandLightAgent:\n    def __init__(self, user, task):\n        self.user = user\n        self.task = task\n        self.actions = [0, 1, 2] # Still/OFF/ON\n        self.init_lr = 0.75\n        self.time_step = 0\n        self.discount_factor = 0.25\n        self.rewardQueue = [0.0, 0.0, 0.0, 0.0, 0.0] # if there are more than 2 negative reward here, reset the time step.\n        self.T_reset = 3",
+        "detail": "Agent.StandLight",
+        "documentation": {
+            "value": "\n```python\nfrom Agent.StandLight import StandLightAgent\n```\n\n```python\n\n\n```\n\n```python\nclass StandLightAgent:\n    def __init__(self, user, task):\n        self.user = user\n        self.task = task\n        self.actions = [0, 1, 2] # Still/OFF/ON\n        self.init_lr = 0.75\n        self.time_step = 0\n        self.discount_factor = 0.25\n        self.rewardQueue = [0.0, 0.0, 0.0, 0.0, 0.0] # if there are more than 2 negative reward here, reset the time step.\n        self.T_reset = 3\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "arg_max",
+        "kind": 2,
+        "importPath": "Agent.StandLight",
+        "description": "Agent.StandLight",
+        "peekOfCode": "def arg_max(q_list):\n    max_idx_list = np.argwhere(q_list == np.amax(q_list))\n    max_idx_list = max_idx_list.flatten().tolist()\n    return random.choice(max_idx_list)",
+        "detail": "Agent.StandLight",
+        "documentation": {
+            "value": "\n```python\nfrom Agent.StandLight import arg_max\n```\n\n```python\n\n\n```\n\n```python\ndef arg_max(q_list):\n    max_idx_list = np.argwhere(q_list == np.amax(q_list))\n    max_idx_list = max_idx_list.flatten().tolist()\n    return random.choice(max_idx_list)\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "TVAgent",
+        "kind": 6,
+        "importPath": "Agent.TV",
+        "description": "Agent.TV",
+        "peekOfCode": "class TVAgent:\n    def __init__(self, user, task):\n        self.user = user\n        self.task = task\n        self.actions = [0, 1, 2] # Still/OFF/ON\n        self.init_lr = 0.75\n        self.time_step = 0\n        self.discount_factor = 0.25\n        self.rewardQueue = [0.0, 0.0, 0.0, 0.0, 0.0] # if there are more than 2 negative reward here, reset the time step.\n        self.T_reset = 3",
+        "detail": "Agent.TV",
+        "documentation": {
+            "value": "\n```python\nfrom Agent.TV import TVAgent\n```\n\n```python\n\n\n```\n\n```python\nclass TVAgent:\n    def __init__(self, user, task):\n        self.user = user\n        self.task = task\n        self.actions = [0, 1, 2] # Still/OFF/ON\n        self.init_lr = 0.75\n        self.time_step = 0\n        self.discount_factor = 0.25\n        self.rewardQueue = [0.0, 0.0, 0.0, 0.0, 0.0] # if there are more than 2 negative reward here, reset the time step.\n        self.T_reset = 3\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "arg_max",
+        "kind": 2,
+        "importPath": "Agent.TV",
+        "description": "Agent.TV",
+        "peekOfCode": "def arg_max(q_list):\n    max_idx_list = np.argwhere(q_list == np.amax(q_list))\n    max_idx_list = max_idx_list.flatten().tolist()\n    return random.choice(max_idx_list)",
+        "detail": "Agent.TV",
+        "documentation": {
+            "value": "\n```python\nfrom Agent.TV import arg_max\n```\n\n```python\n\n\n```\n\n```python\ndef arg_max(q_list):\n    max_idx_list = np.argwhere(q_list == np.amax(q_list))\n    max_idx_list = max_idx_list.flatten().tolist()\n    return random.choice(max_idx_list)\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Coordinator",
+        "kind": 6,
+        "importPath": "coordinator",
+        "description": "coordinator",
+        "peekOfCode": "class Coordinator:\n    def __init__(self, ceilingAgent: CeilingLightAgent, standAgent: StandLightAgent, tvAgent: TVAgent):\n        self.NofAgents = 6\n        self.ceiling = ceilingAgent\n        self.stand = standAgent\n        self.tv = tvAgent\n    def getActions(self, state):\n        actions = [0, 0, 0, 0, 0, 0]\n        actions[0] = self.ceiling.get_action(state)\n        actions[1] = self.stand.get_action(state)",
+        "detail": "coordinator",
+        "documentation": {
+            "value": "\n```python\nfrom coordinator import Coordinator\n```\n\n```python\n\n\n```\n\n```python\nclass Coordinator:\n    def __init__(self, ceilingAgent: CeilingLightAgent, standAgent: StandLightAgent, tvAgent: TVAgent):\n        self.NofAgents = 6\n        self.ceiling = ceilingAgent\n        self.stand = standAgent\n        self.tv = tvAgent\n    def getActions(self, state):\n        actions = [0, 0, 0, 0, 0, 0]\n        actions[0] = self.ceiling.get_action(state)\n        actions[1] = self.stand.get_action(state)\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "numberOfActions",
+        "kind": 2,
+        "importPath": "coordinator",
+        "description": "coordinator",
+        "peekOfCode": "def numberOfActions(actions):\n    result = 0\n    for act in actions:\n        if act != 0:\n            result += 1\n    return result\ndef showActions(actions):\n    ceiling = {0: 'Still', 1: 'OFF', 2: 'ON'}\n    stand = {0: 'Still', 1: 'OFF', 2: 'ON'}\n    ac = {0: 'Still', 1: 'OFF', 2: 'ON', 3: 'UP', 4: 'DOWN'}",
+        "detail": "coordinator",
+        "documentation": {
+            "value": "\n```python\nfrom coordinator import numberOfActions\n```\n\n```python\n\n\n```\n\n```python\ndef numberOfActions(actions):\n    result = 0\n    for act in actions:\n        if act != 0:\n            result += 1\n    return result\ndef showActions(actions):\n    ceiling = {0: 'Still', 1: 'OFF', 2: 'ON'}\n    stand = {0: 'Still', 1: 'OFF', 2: 'ON'}\n    ac = {0: 'Still', 1: 'OFF', 2: 'ON', 3: 'UP', 4: 'DOWN'}\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "showActions",
+        "kind": 2,
+        "importPath": "coordinator",
+        "description": "coordinator",
+        "peekOfCode": "def showActions(actions):\n    ceiling = {0: 'Still', 1: 'OFF', 2: 'ON'}\n    stand = {0: 'Still', 1: 'OFF', 2: 'ON'}\n    ac = {0: 'Still', 1: 'OFF', 2: 'ON', 3: 'UP', 4: 'DOWN'}\n    fan = {0: 'Still', 1: 'OFF', 2: 'LOW', 3: 'MEDIUM', 4: 'HIGH'}\n    tv = {0: 'Still', 1: 'OFF', 2: 'ON'}\n    speaker = {0: 'Still', 1: 'UP', 2: 'DOWN'}\n    act_str = (ceiling, stand, ac, fan, tv, speaker)\n    agent_str = ('Ceiling', 'Stand', 'AC', 'Fan', 'TV', 'Speaker')\n    result_str = ' / '.join(list(map(lambda x, y, z: f'{z}: {x[y]}', act_str, actions, agent_str)))",
+        "detail": "coordinator",
+        "documentation": {
+            "value": "\n```python\nfrom coordinator import showActions\n```\n\n```python\n\n\n```\n\n```python\ndef showActions(actions):\n    ceiling = {0: 'Still', 1: 'OFF', 2: 'ON'}\n    stand = {0: 'Still', 1: 'OFF', 2: 'ON'}\n    ac = {0: 'Still', 1: 'OFF', 2: 'ON', 3: 'UP', 4: 'DOWN'}\n    fan = {0: 'Still', 1: 'OFF', 2: 'LOW', 3: 'MEDIUM', 4: 'HIGH'}\n    tv = {0: 'Still', 1: 'OFF', 2: 'ON'}\n    speaker = {0: 'Still', 1: 'UP', 2: 'DOWN'}\n    act_str = (ceiling, stand, ac, fan, tv, speaker)\n    agent_str = ('Ceiling', 'Stand', 'AC', 'Fan', 'TV', 'Speaker')\n    result_str = ' / '.join(list(map(lambda x, y, z: f'{z}: {x[y]}', act_str, actions, agent_str)))\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Env",
+        "kind": 6,
+        "importPath": "environment",
+        "description": "environment",
+        "peekOfCode": "class Env:\n    def __init__(self):\n        ''' All state data '''\n        ''' Environment state '''\n        self.TimeOfDay = [0, 1, 2, 3] # Morning/Noon/Evening/Night\n        self.Temperature = [0, 1, 2, 3, 4] # Level 0-4\n        # self.Humidity = [0, 1, 2] # Level 0-2\n        self.Brightness = [0, 1, 2, 3] # Level 0-3\n        self.Soundlevel = [0, 1, 2, 3, 4] # Level 0-4\n        ''' Agent state '''",
+        "detail": "environment",
+        "documentation": {
+            "value": "\n```python\nfrom environment import Env\n```\n\n```python\n\n\n```\n\n```python\nclass Env:\n    def __init__(self):\n        ''' All state data '''\n        ''' Environment state '''\n        self.TimeOfDay = [0, 1, 2, 3] # Morning/Noon/Evening/Night\n        self.Temperature = [0, 1, 2, 3, 4] # Level 0-4\n        # self.Humidity = [0, 1, 2] # Level 0-2\n        self.Brightness = [0, 1, 2, 3] # Level 0-3\n        self.Soundlevel = [0, 1, 2, 3, 4] # Level 0-4\n        ''' Agent state '''\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "env",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "env = Env()\nenv.reset()\n#env.currState = [3, 1, 3, 1, 0, 1, 0, 3, 0, 0]\nenv.showState() \nactions = [0, 0, 1, 0, 0, 0]\nprint(showActions(getUserActions()))\nprint(isActionsDone(actions))\nshowActions(actions)\nenv.step(actions)",
+        "detail": "test",
+        "documentation": {
+            "value": "\n```python\nfrom test import env\n```\n\n```python\n\n\n```\n\n```python\nenv = Env()\nenv.reset()\n#env.currState = [3, 1, 3, 1, 0, 1, 0, 3, 0, 0]\nenv.showState() \nactions = [0, 0, 1, 0, 0, 0]\nprint(showActions(getUserActions()))\nprint(isActionsDone(actions))\nshowActions(actions)\nenv.step(actions)\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "#env.currState",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "#env.currState = [3, 1, 3, 1, 0, 1, 0, 3, 0, 0]\nenv.showState() \nactions = [0, 0, 1, 0, 0, 0]\nprint(showActions(getUserActions()))\nprint(isActionsDone(actions))\nshowActions(actions)\nenv.step(actions)",
+        "detail": "test",
+        "documentation": {
+            "value": "\n```python\nfrom test import #env.currState\n```\n\n```python\n\n\n```\n\n```python\n#env.currState = [3, 1, 3, 1, 0, 1, 0, 3, 0, 0]\nenv.showState() \nactions = [0, 0, 1, 0, 0, 0]\nprint(showActions(getUserActions()))\nprint(isActionsDone(actions))\nshowActions(actions)\nenv.step(actions)\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "actions",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "actions = [0, 0, 1, 0, 0, 0]\nprint(showActions(getUserActions()))\nprint(isActionsDone(actions))\nshowActions(actions)\nenv.step(actions)",
+        "detail": "test",
+        "documentation": {
+            "value": "\n```python\nfrom test import actions\n```\n\n```python\n\n\n```\n\n```python\nactions = [0, 0, 1, 0, 0, 0]\nprint(showActions(getUserActions()))\nprint(isActionsDone(actions))\nshowActions(actions)\nenv.step(actions)\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "getUserActions",
+        "kind": 2,
+        "importPath": "user",
+        "description": "user",
+        "peekOfCode": "def getUserActions():\n    # Ceiling Light\n    ceilingAct = input('[Ceiling Light] Please the select action by typing the number [0, 1, 2] = [Still/OFF/ON] ')\n    while not (ceilingAct in '012' and len(ceilingAct) == 1):\n        ceilingAct = input('[Ceiling Light] Wrong input - Type a number [0, 1, 2] = [Still/OFF/ON] ')\n    # Stand Light\n    standAct = input('[Stand Light] Please the select action by typing the number [0, 1, 2] = [Still/OFF/ON] ')\n    while not (standAct in '012' and len(standAct) == 1):\n        standAct = input('[Stand Light] Wrong input - Type a number [0, 1, 2] = [Still/OFF/ON] ')\n    # AC",
+        "detail": "user",
+        "documentation": {
+            "value": "\n```python\nfrom user import getUserActions\n```\n\n```python\n\n\n```\n\n```python\ndef getUserActions():\n    # Ceiling Light\n    ceilingAct = input('[Ceiling Light] Please the select action by typing the number [0, 1, 2] = [Still/OFF/ON] ')\n    while not (ceilingAct in '012' and len(ceilingAct) == 1):\n        ceilingAct = input('[Ceiling Light] Wrong input - Type a number [0, 1, 2] = [Still/OFF/ON] ')\n    # Stand Light\n    standAct = input('[Stand Light] Please the select action by typing the number [0, 1, 2] = [Still/OFF/ON] ')\n    while not (standAct in '012' and len(standAct) == 1):\n        standAct = input('[Stand Light] Wrong input - Type a number [0, 1, 2] = [Still/OFF/ON] ')\n    # AC\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "calculateRewards",
+        "kind": 2,
+        "importPath": "user",
+        "description": "user",
+        "peekOfCode": "def calculateRewards(state, actions, next_state, final_state):\n    ceiling, stand, ac, fan, tv, speaker = 0, 1, 2, 3, 4, 5\n    agent_offset = 4\n    result = [0, 0, 0, 0, 0, 0]\n    # Ceiling\n    result[ceiling] = -1 if next_state[ceiling+agent_offset] != final_state[ceiling+agent_offset] else 1\n    # Stand\n    result[stand] = -1 if next_state[stand+agent_offset] != final_state[stand+agent_offset] else 1\n    # Aircon\n    if actions[ac] == 0 or actions[ac] == 1:",
+        "detail": "user",
+        "documentation": {
+            "value": "\n```python\nfrom user import calculateRewards\n```\n\n```python\n\n\n```\n\n```python\ndef calculateRewards(state, actions, next_state, final_state):\n    ceiling, stand, ac, fan, tv, speaker = 0, 1, 2, 3, 4, 5\n    agent_offset = 4\n    result = [0, 0, 0, 0, 0, 0]\n    # Ceiling\n    result[ceiling] = -1 if next_state[ceiling+agent_offset] != final_state[ceiling+agent_offset] else 1\n    # Stand\n    result[stand] = -1 if next_state[stand+agent_offset] != final_state[stand+agent_offset] else 1\n    # Aircon\n    if actions[ac] == 0 or actions[ac] == 1:\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "readingUser",
+        "kind": 2,
+        "importPath": "user",
+        "description": "user",
+        "peekOfCode": "def readingUser(state):\n    result = [0, 0, 0, 0, 0, 0]\n    result[0] = 2 if state[4] == 0 else 0\n    result[1] = 2 if state[5] == 0 else 0\n    result[4] = 2 if state[8] == 0 else 0\n    return result",
+        "detail": "user",
+        "documentation": {
+            "value": "\n```python\nfrom user import readingUser\n```\n\n```python\n\n\n```\n\n```python\ndef readingUser(state):\n    result = [0, 0, 0, 0, 0, 0]\n    result[0] = 2 if state[4] == 0 else 0\n    result[1] = 2 if state[5] == 0 else 0\n    result[4] = 2 if state[8] == 0 else 0\n    return result\n```\n",
+            "supportThemeIcons": false
+        }
+    }
+]

@@ -64,3 +64,11 @@ def calculateRewards(state, actions, next_state, final_state):
         result[speaker] = -1 if next_state[speaker+agent_offset] < final_state[speaker+agent_offset] else 1
     
     return result
+
+def readingUser(state):
+    result = [0, 0, 0, 0, 0, 0]
+    result[0] = 2 if state[4] == 0 else 0
+    result[1] = 2 if state[5] == 0 else 0
+    result[4] = 2 if state[8] == 0 else 0
+
+    return result

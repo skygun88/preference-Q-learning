@@ -74,6 +74,7 @@ class Env:
         sound = self.calculateSoundLevel(ac, fan, speaker)
 
         self.currState = [time, temperature, brightness, sound, ceiling, stand, ac, fan, tv, speaker]
+        return self.currState[:]
 
     ''' Function to update agents' state '''
     def updateAgents(self, actions):
