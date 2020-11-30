@@ -22,7 +22,7 @@ class CeilingLightAgent:
         ''' Update the Q Function '''
         q_2 = reward + self.discount_factor * max(self.q_table[next_state])
         self.q_table[state][action] += (self.init_lr/self.time_step) * (q_2 - q_1)
-        
+
         ''' Update the reward queue '''
         self.rewardQueue.pop(0)
         self.rewardQueue.append(reward)
