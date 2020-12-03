@@ -35,8 +35,8 @@ class Env:
     ''' Function to calculate the temperature according to AC and Fan '''
     def calculateTemperature(self, time, ac, fan):
         time_to_tem = {0: 3, 1: 4, 2: 2, 3: 2}
-        ac_to_tem = {0: 0, 1: -1, 2: -2, 3: -3}
-        fan_to_tem = {0: 0, 1: -1, 2: -1, 3: -2}
+        ac_to_tem = {0: 0, 1: -0.5, 2: -1.0, 3: -1.5}
+        fan_to_tem = {0: 0, 1: -0.4, 2: -0.8, 3: -1.2}
         temperature = int(max(min(time_to_tem[time] + ac_to_tem[ac] + fan_to_tem[fan], 4), 0))
         return temperature
 
@@ -51,7 +51,7 @@ class Env:
 
     ''' Function to calculate the sound level according to AC, fan, and speaker '''
     def calculateSoundLevel(self, ac, fan, speaker):
-        ac_to_sound = {0: 0, 1: 0.5, 2: 1, 3: 1.5}
+        ac_to_sound = {0: 0, 1: 0.4, 2: 0.8, 3: 1.2}
         fan_to_sound = {0: 0, 1: 0.5, 2: 0.5, 3: 1}
         speaker_to_sound = {0: 0, 1: 1, 2: 2, 3: 3}
         soundlevel = int(max(min(ac_to_sound[ac] + fan_to_sound[fan] + speaker_to_sound[speaker], 4), 0))
@@ -79,37 +79,100 @@ class Env:
     ''' Function to update agents' state '''
     def updateAgents(self, actions):
         ceilingAct, standAct, acAct, fanAct, tvAct, speakerAct = actions[0], actions[1], actions[2], actions[3], actions[4], actions[5]
+        
         # Ceiling Light
-        if ceilingAct != 0:
-            self.currState[self.agents['ceiling']] = ceilingAct - 1
+        self.currState[self.agents['ceiling']] = self.executeCeilingLight(self.currState[self.agents['ceiling']], ceilingAct)
         # Stand Light
-        if standAct != 0:
-           self.currState[self.agents['stand']] = standAct - 1
+        self.currState[self.agents['stand']] = self.executeStandLight(self.currState[self.agents['stand']], standAct)
         # AC
-        if acAct != 0:
-            if acAct == 1:
-                self.currState[self.agents['ac']] = 0
-            if acAct == 2:
-                if self.currState[self.agents['ac']] == 0:
-                    self.currState[self.agents['ac']] = 2
-            if acAct == 3:
-                if self.currState[self.agents['ac']] != 0:
-                    self.currState[self.agents['ac']] = min(self.currState[self.agents['ac']] + 1, 3)
-            if acAct == 4:
-                if self.currState[self.agents['ac']] != 0:
-                    self.currState[self.agents['ac']] = max(self.currState[self.agents['ac']] - 1, 0)
+        self.currState[self.agents['ac']] = self.executeAC(self.currState[self.agents['ac']], acAct)
         # Fan
-        if fanAct != 0:
-            self.currState[self.agents['fan']] = fanAct - 1
+        self.currState[self.agents['fan']] = self.executeFan(self.currState[self.agents['fan']], fanAct)
         # TV
-        if tvAct != 0:
-            self.currState[self.agents['tv']] = tvAct - 1
+        self.currState[self.agents['tv']] = self.executeTV(self.currState[self.agents['tv']], tvAct)
         # Speaker
-        if speakerAct != 0:
-            if speakerAct == 1:
-                self.currState[self.agents['speaker']] = min(self.currState[self.agents['speaker']] + 1, 3)
-            if speakerAct == 2:
-                self.currState[self.agents['speaker']] = max(self.currState[self.agents['speaker']] - 1, 0)
+        self.currState[self.agents['speaker']] = self.executeSpeaker(self.currState[self.agents['speaker']], speakerAct)
+
+        # if ceilingAct != 0:
+        #     self.currState[self.agents['ceiling']] = ceilingAct - 1
+        
+        # if standAct != 0:
+        #    self.currState[self.agents['stand']] = standAct - 1
+        
+        # if acAct != 0:
+        #     if acAct == 1:
+        #         self.currState[self.agents['ac']] = 0
+        #     if acAct == 2:
+        #         if self.currState[self.agents['ac']] == 0:
+        #             self.currState[self.agents['ac']] = 2
+        #     if acAct == 3:
+        #         if self.currState[self.agents['ac']] != 0:
+        #             self.currState[self.agents['ac']] = min(self.currState[self.agents['ac']] + 1, 3)
+        #     if acAct == 4:
+        #         if self.currState[self.agents['ac']] != 0:
+        #             self.currState[self.agents['ac']] = max(self.currState[self.agents['ac']] - 1, 0)
+        
+        # if fanAct != 0:
+        #     self.currState[self.agents['fan']] = fanAct - 1
+        
+        # if tvAct != 0:
+        #     self.currState[self.agents['tv']] = tvAct - 1
+        
+        # if speakerAct != 0:
+        #     if speakerAct == 1:
+        #         self.currState[self.agents['speaker']] = min(self.currState[self.agents['speaker']] + 1, 3)
+        #     if speakerAct == 2:
+        #         self.currState[self.agents['speaker']] = max(self.currState[self.agents['speaker']] - 1, 0)
+
+    def executeCeilingLight(self, curr_state, action):
+        result = curr_state
+        if action != 0:
+            result = action - 1
+        return result
+
+    def executeStandLight(self, curr_state, action):
+        result = curr_state
+        if action != 0:
+            result = action - 1
+        return result
+
+    def executeAC(self, curr_state, action):
+        result = curr_state
+        if action != 0:
+            if action == 1:
+                result = 0
+            if action == 2:
+                if curr_state == 0:
+                    result = 1
+            if action == 3:
+                if curr_state != 3:
+                    result = min(curr_state + 1, 3)
+            if action == 4:
+                if curr_state != 0:
+                    result = max(curr_state - 1, 0)
+        return result
+
+    def executeFan(self, curr_state, action):
+        result = curr_state
+        if action != 0:
+            result = action - 1
+        return result
+
+    def executeTV(self, curr_state, action):
+        result = curr_state
+        if action != 0:
+            result = action - 1
+        return result
+
+    def executeSpeaker(self, curr_state, action):
+        result = curr_state
+        if action != 0:
+            if action == 1:
+                result = min(curr_state + 1, 3)
+            if action == 2:
+                result = max(curr_state - 1, 0)
+        return result
+
 
     ''' Function to update environment state '''
     def updateEnviornment(self):
@@ -133,9 +196,9 @@ class Env:
         self.updateEnviornment()
         nextState = self.currState[:]
 
-        print('----Current state induced by agents----')
-        self.showState()
-        print('---------------------------------------')
+        # print('----Current state induced by agents----')
+        # self.showState()
+        # print('---------------------------------------')
 
         ''' Calculate the reward '''
         return nextState

@@ -1,3 +1,6 @@
+import random
+from environment import *
+
 def getUserActions():
     # Ceiling Light
     ceilingAct = input('[Ceiling Light] Please the select action by typing the number [0, 1, 2] = [Still/OFF/ON] ')
@@ -65,10 +68,70 @@ def calculateRewards(state, actions, next_state, final_state):
     
     return result
 
-def readingUser(state):
+def readingUser(state, env: Env):
+    preferable_environment = [0, 2, 2, 2]
+    curr_state = state[:]
     result = [0, 0, 0, 0, 0, 0]
-    result[0] = 2 if state[4] == 0 else 0
-    result[1] = 2 if state[5] == 0 else 0
-    result[4] = 2 if state[8] == 0 else 0
+    brightness_group = [('ceiling', (4, 0)), ('stand', (5, 1)), ('tv', (8, 4))]
+    tem_group = [('ac', (6, 2)), ('fan', (7, 3))]
+    sound_group = [('ac', (6, 2)), ('fan', (7, 3)), ('speaker', (9, 5))]
+    random.shuffle(brightness_group)
+    random.shuffle(tem_group)
+
+    ''' Brightness setup '''
+    for agent in brightness_group:
+        if agent[0] == 'ceiling' or agent[0] == 'stand':
+            if preferable_environment[2] > curr_state[2]:
+                if curr_state[agent[1][0]] == 0:
+                    result[agent[1][1]] = 2
+                    curr_state[agent[1][0]] == 1
+                    curr_state[2] = env.calculateBrightness(curr_state[0], curr_state[4], curr_state[5], curr_state[8])
+            
+        elif agent[0] == 'tv':
+            if curr_state[agent[1][0]] == 1:
+                result[agent[1][1]] = 1
+                curr_state[agent[1][0]] == 0
+                curr_state[2] = env.calculateBrightness(curr_state[0], curr_state[4], curr_state[5], curr_state[8])
+
+    
+    for agent in tem_group:
+        if agent[0] == 'ac':
+            if preferable_environment[1] > curr_state[1]+1: 
+                ''' Need to Aircon down '''
+                if curr_state[agent[1][0]] > 0:
+                    result[agent[1][1]] = 4
+                    curr_state[agent[1][0]] = env.executeAC(curr_state[agent[1][0]], result[agent[1][1]])
+                    curr_state[2] = env.calculateTemperature(curr_state[0], curr_state[6], curr_state[7])
+            
+            elif preferable_environment[1] < curr_state[1]-1:
+                ''' Need to Aircon up '''
+                if curr_state[agent[1][0]] < 3:
+                    result[agent[1][1]] = 3
+                    curr_state[agent[1][0]] = env.executeAC(curr_state[agent[1][0]], result[agent[1][1]])
+                    curr_state[2] = env.calculateTemperature(curr_state[0], curr_state[6], curr_state[7])
+
+        elif agent[0] == 'fan':
+            if preferable_environment[1] > curr_state[1]: 
+                ''' Need to Fan down '''
+                if curr_state[agent[1][0]] > 0:
+                    result[agent[1][1]] = curr_state[agent[1][0]]
+                    curr_state[agent[1][0]] = env.executeFan(curr_state[agent[1][0]], result[agent[1][1]])
+                    curr_state[2] = env.calculateTemperature(curr_state[0], curr_state[6], curr_state[7])
+            
+            elif preferable_environment[1] < curr_state[1]:
+                ''' Need to Fan up '''
+                if curr_state[agent[1][0]] < 3:
+                    result[agent[1][1]] = curr_state[agent[1][0]] + 2
+                    curr_state[agent[1][0]] = env.executeFan(curr_state[agent[1][0]], result[agent[1][1]])
+                    curr_state[2] = env.calculateTemperature(curr_state[0], curr_state[6], curr_state[7])
+    
+    ''' Sound level setup'''
+    agent = sound_group[0]
+    if agent[0] == 'speaker':
+        if preferable_environment[3] < curr_state[3]:
+            if curr_state[agent[1][0]] > 0:
+                result[agent[1][1]] = 2
+                curr_state[agent[1][0]] = env.executeSpeaker(curr_state[agent[1][0]], result[agent[1][1]])
+                curr_state[1] = env.calculateSoundlevel(curr_state[6], curr_state[7], curr_state[9])
 
     return result
